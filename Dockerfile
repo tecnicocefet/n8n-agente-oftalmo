@@ -1,11 +1,7 @@
-# Dockerfile
-FROM n8nio/n8n:1.123.26
+FROM n8nio/n8n:latest
 
-# Mudar para root para poder instalar npm packages
-USER root
+# Ativa autenticação básica
+ENV N8N_BASIC_AUTH_ACTIVE=true
 
-# Instala o n8n-nodes-whapi forçando ignorar conflitos de peer deps
-RUN npm install n8n-nodes-whapi --legacy-peer-deps
-
-# Voltar para o usuário node do n8n
-USER node
+# Define timezone
+ENV GENERIC_TIMEZONE=America/Sao_Paulo
